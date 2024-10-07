@@ -3,11 +3,12 @@ document.getElementById('greetingForm').addEventListener('submit', async (event)
   
     const name = document.getElementById('name').value;
     const message = document.getElementById('message').value;
+    const image = document.getElementById('image').value;
     try {
       const response = await fetch('/api/greetings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, message }),
+        body: JSON.stringify({ name, message , image}),
       });
       
       if (response.ok) {
