@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Greetings</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin-top: 50px;
+    }
+    
+    .card {
+      border-radius: 10px;
+    }
+  
+    .form-control {
+      border-radius: 5px;
+    }
+  
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+    }
+  
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+          <div class="card-header text-center bg-primary text-white">
+            <h3>Submit Your Wedding Greeting</h3>
+          </div>
+          <div class="card-body">
+            <form id="greetingForm">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Greeting Message:</label>
+                <textarea id="message" name="message" class="form-control" rows="4" placeholder="Write your greeting here" required></textarea>
+              </div>
+              <!-- <div class="form-group">
+                <label for="image">Upload a Picture</label>
+                <input type="file" id="image" name="image" class="form-control">
+              </div> -->
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>  
+      <script src="script.js"></script>
+</body>
+</html>
