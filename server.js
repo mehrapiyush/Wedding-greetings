@@ -3,8 +3,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const twilio = require('twilio');
 const bodyParser = require('body-parser');
-const accountSid = 'AC83e24f356b6979e0323ba4216b3f1ba8'; 
-const authToken = '8547c769e12e7a93f78c07c851ee22be'; 
+const accountSid = process.env.TWILIO_ACCOUNT_SID || 'AC83e24f356b6979e0323ba4216b3f1ba8'; 
+const authToken = process.env.TWILIO_AUTH_TOKEN || '65a0bb77524e5b90f3f13ad309fc0f38'; 
 const client = new twilio(accountSid, authToken);
 
 //Midleware
