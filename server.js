@@ -44,8 +44,8 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
     console.log(req.file);
     if(req.file) {
         const { name, phone, message} = req.body;
-        const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-
+       // const fileUrl = `${req.protocol}s://${req.get('host')}/uploads/${req.file.filename}`;
+        const fileUrl = "https://7d87-49-36-137-142.ngrok-free.app"+`/uploads/${req.file.filename}`;
         
         console.log('Uploaded file:', req.file.filename);
         console.log('File URL:', fileUrl); 
