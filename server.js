@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const twilio = require('twilio');
 const bodyParser = require('body-parser');
 const accountSid = 'AC83e24f356b6979e0323ba4216b3f1ba8'; 
@@ -44,8 +44,8 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
     console.log(req.file);
     if(req.file) {
         const { name, phone, message} = req.body;
-       // const fileUrl = `${req.protocol}s://${req.get('host')}/uploads/${req.file.filename}`;
-        const fileUrl = "https://7d87-49-36-137-142.ngrok-free.app"+`/uploads/${req.file.filename}`;
+       const fileUrl = `${req.protocol}s://${req.get('host')}/uploads/${req.file.filename}`;
+       // const fileUrl = "https://7d87-49-36-137-142.ngrok-free.app"+`/uploads/${req.file.filename}`;
         
         console.log('Uploaded file:', req.file.filename);
         console.log('File URL:', fileUrl); 
