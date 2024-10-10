@@ -58,7 +58,7 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
             })
             .then((message) => {
                 console.log('WhatsApp message sent:', message.sid);
-                //removeUploadedFiles(res);
+                removeUploadedFiles(res);
                 res.status(200).send({ success: true, message: 'Greeting submitted and WhatsApp message sent!' });
             })
             .catch((err) => {
