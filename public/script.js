@@ -19,6 +19,9 @@ document.getElementById('greetingForm').addEventListener('submit', async (event)
       if (response.ok) {
         alert('Greeting submitted successfully!');
         document.getElementById('greetingForm').reset();
+      } else {
+        alert('Something went wrong, please try again !');
+        document.getElementById('greetingForm').reset();
       }
     } catch (error) {
       alert('Failed to submit greeting. Please try again.');

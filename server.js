@@ -45,7 +45,7 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
     if(req.file) {
         const { name, phone, message} = req.body;
        const fileUrl = `${req.protocol}s://${req.get('host')}/uploads/${req.file.filename}`;
-       // const fileUrl = "https://7d87-49-36-137-142.ngrok-free.app"+`/uploads/${req.file.filename}`;
+       //const fileUrl = "https://7405-136-226-230-124.ngrok-free.app"+`/uploads/${req.file.filename}`;
         
         console.log('Uploaded file:', req.file.filename);
         console.log('File URL:', fileUrl); 
@@ -58,10 +58,12 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
             })
             .then((message) => {
                 console.log('WhatsApp message sent:', message.sid);
+                removeUploadedFiles(res);
                 res.status(200).send({ success: true, message: 'Greeting submitted and WhatsApp message sent!' });
             })
             .catch((err) => {
                 console.error('Error sending WhatsApp message:', err);
+                removeUploadedFiles(res);
                 res.status(500).send({ success: false, message: 'Failed to send WhatsApp message.' });
             });
     }
@@ -71,4 +73,21 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+function removeUploadedFiles(res) {
+    fs.readdir('uploads', (err, files) => {
+        if (err) {
+            return res.status(500).send('Error reading upload directory.');
+        }
+
+        // Delete each file in the uploads directory
+        for (const file of files) {
+            fs.unlink(path.join('uploads', file), (err) => {
+            console.log("Remove the file from server");
+                if (err) {
+                    console.error(`Failed to delete file: ${file}`, err);
+                }
+            });
+        }
+    });
+}
 
