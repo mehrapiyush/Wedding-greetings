@@ -45,7 +45,7 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
     if(req.file) {
         const { name, phone, message} = req.body;
        const fileUrl = `${req.protocol}s://${req.get('host')}/uploads/${req.file.filename}`;
-       //const fileUrl = "https://7405-136-226-230-124.ngrok-free.app"+`/uploads/${req.file.filename}`;
+        //const fileUrl = "https://f6b9-49-36-138-123.ngrok-free.app"+`/uploads/${req.file.filename}`;
         
         console.log('Uploaded file:', req.file.filename);
         console.log('File URL:', fileUrl); 
@@ -58,12 +58,12 @@ app.post('/api/greetings',upload.single('image'),(req, res) => {
             })
             .then((message) => {
                 console.log('WhatsApp message sent:', message.sid);
-                removeUploadedFiles(res);
+                //removeUploadedFiles(res);
                 res.status(200).send({ success: true, message: 'Greeting submitted and WhatsApp message sent!' });
             })
             .catch((err) => {
                 console.error('Error sending WhatsApp message:', err);
-                removeUploadedFiles(res);
+                //removeUploadedFiles(res);
                 res.status(500).send({ success: false, message: 'Failed to send WhatsApp message.' });
             });
     }
